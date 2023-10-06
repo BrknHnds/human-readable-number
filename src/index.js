@@ -13,21 +13,26 @@
 // }
 
 function toReadable(number) {
+    let result = '';
+    let stringNumber = `${number}`;
     const readableNumber = {
         0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eigth', 9: 'nine',
-        10: 'ten', 11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: `${this[4]} + teen`, 15: `${this[5]} + teen`, 
-        16: `${this[6]} + teen`, 17: `${this[7]} + teen`,18: `${this[8]} + teen`,19: `${this[9]} + teen`, 
-        20: 'twenty', 30: 'thirty', 40: `${this[4]} + ty`, 50: `${this[5]} + ty`, 60: `${this[6]} + ty`, 
-        70: `${this[7]} + ty`, 80: `${this[8]} + ty`, 90: `${this[9]} + ty`,
-        100: `${this.[1]} hundred`, 200: `${this.[2]} hundred`, 300: `${this.[3]} hundred`, 400: `${this.[4]} hundred`,
-        500: `${this.[5]} hundred`, 600: `${this.[6]} hundred`, 700: `${this.[7]} hundred`, 800: `${this.[8]} hundred`,
-        900: `${this.[9]} hundred`
+        10: 'ten', 11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: `fourteen`, 15: `fiveteen`, 16: `sixteen`, 
+        17: `seventeen`, 18: `eighteen`, 19: `nineteen`,
+        20: 'twenty', 30: 'thirty', 40: `fourty`, 50: `fivety`, 60: `sixty`, 70: `seventy`, 80: `eghtty`, 90: `ninety`,
+        100: `hundred`
     };
-    let result = '';
-    let numberArr = number.toString();
-    numberArr.forEach((element, index) => {
-        result += readableNumber.Number(element);
-    });
-
+    if (stringNumber.length === 3) {
+        result += readableNumber[stringNumber[0]] + ' ' + readableNumber[100];
+        if ((stringNumber[1] && stringNumber[2]) !== '0') {
+            result += ' ' + 'and';
+        }
+    }
+    // if (stringNumber.length === 2) {
+        // if (Number(stringNumber[2]+stringNumber[3]) > 19) {
+            // result += readableNumber[`${stringNumber[2]}0`]; doesn't work
+        // }
+    // }
+    console.log(result);
 }
-console.log(toReadable(999));
+toReadable(999);
